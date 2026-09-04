@@ -106,3 +106,19 @@ function checkCode() {
         }, 1000);
     }
 }
+
+
+function goBack() {
+    // Hide the Access Granted screen
+    document.getElementById("successMessage").style.display = "none";
+
+    // Clear the entered code
+    enteredCode = "";
+
+    // Clear the five code squares
+    const squares = document.querySelectorAll(".code-squares span");
+    squares.forEach(square => {
+        square.textContent = "";
+        square.classList.remove("filled");
+    });
+}
