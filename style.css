@@ -1,0 +1,406 @@
+/* -------------------------------- */
+/* BASIC PAGE SETUP */
+/* -------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background: #031719;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: "Courier New", monospace;
+
+    overflow: hidden;
+
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+
+/* -------------------------------- */
+/* MAIN CODEPAD */
+/* -------------------------------- */
+
+.codepad {
+    width: min(94vw, 1100px);
+    height: min(76vh, 650px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: #06272a;
+    border: 3px solid #00ffff;
+    box-shadow:
+        0 0 10px #00ffff,
+        0 0 25px rgba(0, 255, 255, 0.25),
+        inset 0 0 25px rgba(0, 255, 255, 0.12);
+    position: relative;
+    clip-path: polygon(
+        0 5%,
+        3% 0,
+        97% 0,
+        100% 5%,
+        100% 95%,
+        97% 100%,
+        3% 100%,
+        0 95%
+    );
+}
+
+
+/* -------------------------------- */
+/* LEFT DISPLAY */
+/* -------------------------------- */
+
+.display {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px 20px 10px;
+}
+
+.display h1 {
+    margin: 0;
+    color: #00ffff;
+    font-size: clamp(45px, 6vw, 75px);
+    line-height: 1;
+    letter-spacing: 6px;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow:
+        0 0 5px #00ffff,
+        0 0 15px #00ffff;
+    font-weight: bold;
+}
+
+
+/* -------------------------------- */
+/* CODE SQUARES */
+/* -------------------------------- */
+
+.code-squares {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+
+/* Empty squares */
+
+.code-squares span {
+    width: 55px;
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #00ffff;
+    font-size: 36px;
+    font-weight: bold;
+
+    border: 2px solid #00ffff;
+
+    box-shadow:
+        0 0 5px #00ffff;
+
+    transition:
+        background 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+/* Filled Squares */
+
+.code-squares span.filled {
+    background: rgba(0, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 8px #00ffff,
+        inset 0 0 12px rgba(0, 255, 255, 0.2);
+}
+
+
+/* -------------------------------- */
+/* KEYBOARD */
+/* -------------------------------- */
+
+.keypad {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0px 20px 40px;
+    transform: translateY(-60px);
+}
+
+/* Keyboard rows */
+
+.keyboard-row {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 9px;
+}
+
+
+/* Individual letter buttons */
+
+.keyboard-row button {
+    width: 64px;
+    height: 64px;
+    background: #06272a;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-family: "Courier New", monospace;
+    font-size: 26px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow:
+        0 0 5px #00ffff,
+        inset 0 0 8px rgba(0, 255, 255, 0.15);
+    transition:
+        background 0.08s ease,
+        color 0.08s ease,
+        box-shadow 0.08s ease,
+        transform 0.08s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Slightly offset rows like a real keyboard */
+
+.second-row {
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.third-row {
+    padding-left: 65px;
+    padding-right: 65px;
+}
+
+
+/* -------------------------------- */
+/* BOTTOM BUTTONS */
+/* -------------------------------- */
+
+.bottom-row {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 3px;
+}
+
+
+.bottom-row button {
+    height: 58px;
+
+    background: #06272a;
+
+    border: 2px solid #00ffff;
+
+    color: #00ffff;
+
+    font-family: "Courier New", monospace;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 5px #00ffff,
+        inset 0 0 8px rgba(0, 255, 255, 0.15);
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Backspace */
+
+.backspace {
+    width: 125px;
+}
+
+
+/* Enter */
+
+.enter {
+    width: 125px;
+}
+
+
+/* -------------------------------- */
+/* BUTTON PRESS EFFECT */
+/* -------------------------------- */
+
+.keypad button:active {
+    background: #00ffff;
+
+    color: #031719;
+
+    box-shadow:
+        0 0 15px #00ffff,
+        0 0 30px #00ffff;
+
+    transform: scale(0.95);
+}
+
+
+/* -------------------------------- */
+/* POP-UP MESSAGES */
+/* -------------------------------- */
+
+.message {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 10, 10, 0.92);
+
+    z-index: 100;
+}
+
+
+/* Message box */
+
+.message-box {
+    padding: 60px 100px;
+
+    text-align: center;
+
+    border: 3px solid;
+
+    background: rgba(0, 20, 20, 0.95);
+}
+
+
+/* -------------------------------- */
+/* SUCCESS */
+/* -------------------------------- */
+
+.success-message {
+    color: #00ff66;
+}
+
+.success-message .message-box {
+    border-color: #00ff66;
+
+    box-shadow:
+        0 0 15px #00ff66,
+        0 0 40px rgba(0, 255, 100, 0.4);
+}
+
+.success-message .message-title {
+    font-size: clamp(40px, 7vw, 80px);
+
+    letter-spacing: 5px;
+
+    text-shadow:
+        0 0 8px #00ff66,
+        0 0 20px #00ff66;
+}
+
+
+/* -------------------------------- */
+/* WRONG CODE */
+/* -------------------------------- */
+
+.denied-message {
+    color: #ff3333;
+}
+
+.denied-message .message-box {
+    border-color: #ff3333;
+
+    box-shadow:
+        0 0 15px #ff3333,
+        0 0 35px rgba(255, 50, 50, 0.35);
+}
+
+.denied-message .message-title {
+    font-size: clamp(30px, 5vw, 55px);
+
+    letter-spacing: 4px;
+}
+
+.message-subtitle {
+    margin-top: 15px;
+
+    font-size: clamp(20px, 3vw, 32px);
+
+    letter-spacing: 3px;
+}
+
+
+/* -------------------------------- */
+/* SMALLER SCREENS */
+/* -------------------------------- */
+
+@media (max-width: 900px) {
+
+    .codepad {
+        height: 80vh;
+    }
+
+    .display {
+        width: 32%;
+        padding: 35px;
+    }
+
+    .keypad {
+        width: 68%;
+        padding: 25px;
+    }
+
+    .keyboard-row {
+        gap: 6px;
+    }
+
+    .keyboard-row button {
+        width: 45px;
+        height: 45px;
+        font-size: 19px;
+    }
+
+    .second-row {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .third-row {
+        padding-left: 45px;
+        padding-right: 45px;
+    }
+}

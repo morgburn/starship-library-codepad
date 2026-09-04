@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Makes the page fit the iPad screen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Allows the page to work more like an app when added to Home Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Security Codepad</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- MAIN CODEPAD -->
+    <main class="codepad">
+
+        <!-- LEFT SIDE -->
+        <section class="display">
+
+            <h1>
+                ENTER CODE
+            </h1>
+
+            <!-- The five squares -->
+            <div class="code-squares" id="codeSquares">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+        <section class="keypad">
+
+            <!-- TOP ROW -->
+            <div class="keyboard-row">
+                <button onclick="pressLetter('Q')">Q</button>
+                <button onclick="pressLetter('W')">W</button>
+                <button onclick="pressLetter('E')">E</button>
+                <button onclick="pressLetter('R')">R</button>
+                <button onclick="pressLetter('T')">T</button>
+                <button onclick="pressLetter('Y')">Y</button>
+                <button onclick="pressLetter('U')">U</button>
+                <button onclick="pressLetter('I')">I</button>
+                <button onclick="pressLetter('O')">O</button>
+                <button onclick="pressLetter('P')">P</button>
+            </div>
+
+
+            <!-- SECOND ROW -->
+            <div class="keyboard-row second-row">
+                <button onclick="pressLetter('A')">A</button>
+                <button onclick="pressLetter('S')">S</button>
+                <button onclick="pressLetter('D')">D</button>
+                <button onclick="pressLetter('F')">F</button>
+                <button onclick="pressLetter('G')">G</button>
+                <button onclick="pressLetter('H')">H</button>
+                <button onclick="pressLetter('J')">J</button>
+                <button onclick="pressLetter('K')">K</button>
+                <button onclick="pressLetter('L')">L</button>
+            </div>
+
+
+            <!-- THIRD ROW -->
+            <div class="keyboard-row third-row">
+                <button onclick="pressLetter('Z')">Z</button>
+                <button onclick="pressLetter('X')">X</button>
+                <button onclick="pressLetter('C')">C</button>
+                <button onclick="pressLetter('V')">V</button>
+                <button onclick="pressLetter('B')">B</button>
+                <button onclick="pressLetter('N')">N</button>
+                <button onclick="pressLetter('M')">M</button>
+            </div>
+
+
+            <!-- BOTTOM ROW -->
+            <div class="bottom-row">
+
+                <button
+                    class="backspace"
+                    onclick="backspace()">
+                    ←
+                </button>
+
+                <button
+                    class="enter"
+                    onclick="checkCode()">
+                    ✓
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div class="message success-message" id="successMessage">
+        <div class="message-box">
+            <div class="message-title">ACCESS GRANTED</div>
+        </div>
+    </div>
+
+
+    <!-- WRONG CODE MESSAGE -->
+    <div class="message denied-message" id="deniedMessage">
+        <div class="message-box">
+            <div class="message-title">
+                WRONG CODE
+            </div>
+
+            <div class="message-subtitle">
+                ACCESS DENIED
+            </div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
